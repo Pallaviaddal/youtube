@@ -26,6 +26,10 @@ app.use("/like", likeroutes);
 app.use("/watch", watchlaterroutes);
 app.use("/history", historyrroutes);
 app.use("/comment", commentroutes);
+app.use(cors({
+  origin: ["https://your-frontend.vercel.app"],
+  credentials: true
+}));
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
