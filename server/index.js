@@ -31,6 +31,9 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
+app.get('/', (req , res)=>{
+  res.send('your code is working fine!')
+})
 
 const DBURL = process.env.DB_URL;
 mongoose

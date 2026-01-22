@@ -8,14 +8,25 @@ export const login = async (req, res) => {
     const existingUser = await users.findOne({ email });
 
     if (!existingUser) {
-      const newUser = await users.create({ email, name, image });
-      return res.status(201).json({ result: newUser });
+      try{
+          const newuser = await users.create({email, name, image});
+          res.status(200).json({result:newuser})
+        }
+        catch (error){
+        res.status(500).json({message: "something went wrong!"})
+
+      }
     } else {
       return res.status(200).json({ result: existingUser });
     }
   } catch (error) {
     console.error("Login error:", error);
     return res.status(500).json({ message: "Something went wrong" });
+  }
+
+  function newFunction() {
+    caches; {
+    }
   }
 };
 export const updateprofile = async (req, res) => {

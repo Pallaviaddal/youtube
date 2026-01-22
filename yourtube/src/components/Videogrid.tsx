@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import Videocard from "./videocard";
 import axiosInstance from "@/lib/axiosinstance";
 
+
 const Videogrid = () => {
-  const [videos, setvideo] = useState<any>(null);
+  const [videos, setVideos] = useState<any[]>([]);
   const [loading, setloading] = useState(true);
   useEffect(() => {
     const fetchvideo = async () => {
       try {
         const res = await axiosInstance.get("/video/getall");
-        setvideo(res.data);
+        setVideos(res.data);
       } catch (error) {
         console.log(error);
       } finally {
